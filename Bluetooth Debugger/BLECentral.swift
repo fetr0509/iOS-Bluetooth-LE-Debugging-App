@@ -9,27 +9,34 @@
 import Foundation
 import CoreBluetooth
 
-
-protocol BLECentralControllerDelegate: class {
-    func hasUpdate(sender: BLECentral)
+// These delegate protocols allow the Main Central View and Detail View to know
+// When an update is available for their respective tableviews
+@objc protocol BLECentralControllerDelegate: class {
+    func hasUpdateDevice(sender: BLECentral)
+    func hasUpdateDetail(sender: BLECentral)
 }
 
 public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
     
-    var deviceList: NSMutableArray = []
-    var deviceNameList: NSMutableArray = []
-    var discoveredServices: NSMutableArray = []
-    var discoveredDescriptors: NSMutableArray = []
+    var deviceList: NSMutableArray = [] // list of discovered devices
+    var deviceNameList: NSMutableArray = [] // list of discovered device names (for tableview)
+    var discoveredServices: NSMutableArray = [] // list of discovered services
+    var discoveredCharacteristics: NSMutableArray = []
+    var discoveredDescriptors: NSMutableArray = [] // list of discovered service descriptors
     var centralManager: CBCentralManager!
-    var connectedDevice: CBPeripheral? = nil
+    var connectedDevice: CBPeripheral? = nil // set when device is succefully connected to
     
-    weak var delegate:BLECentralControllerDelegate?
+    weak var mainDelegate :BLECentralControllerDelegate?
+    weak var detailDelegate :BLECentralControllerDelegate?
+    
     
     override init(){
         super.init()
+        // initialize the Central Manager
         centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
     }
     
+    // Get the actual device using the index selected in the TableView
     public func getDevice(index: Int) -> CBPeripheral? {
         if deviceList.count > index {
             return (deviceList[index] as! CBPeripheral)
@@ -38,6 +45,7 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         }
     }
     
+    // Helper function for connecting to device
     public func connectToDevice(index: Int) -> Void {
         let device = deviceList[index] as! CBPeripheral
         centralManager.connectPeripheral(device, options: nil)
@@ -45,6 +53,7 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         
     }
     
+    // Helper function for disconnecting to device
     public func disconnectDevice() -> Void {
         if connectedDevice != nil {
             centralManager.cancelPeripheralConnection(connectedDevice!)
@@ -59,6 +68,7 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.startedScanning)
     }
     
+    // Called when the hardware state is updated.
     public func centralManagerDidUpdateState(central: CBCentralManager) {
         switch central.state {
         case CBCentralManagerState.PoweredOn:
@@ -83,10 +93,12 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         }
     }
     
+    // Not used yet
     public func centralManager(central: CBCentralManager, willRestoreState dict: [String : AnyObject]) {
         
     }
     
+    // Called when successfully connected to a device
     public func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
         connectedDevice = peripheral
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.didConnect)
@@ -96,6 +108,7 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.discoverServices)
     }
     
+    // called when the connection failed, if there is an error it is displayed
     public func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         if error == nil {
             SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.didFailConnect)
@@ -104,6 +117,7 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         }
     }
     
+    // Successfully disconnected from Peripheral, displays error if it was not intentional
     public func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         if error == nil {
             SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.didDisconnect)
@@ -131,38 +145,48 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
             deviceNameList.addObject("Unknown Device")
         }
         
-        delegate?.hasUpdate(self)
+        mainDelegate?.hasUpdateDevice(self)
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.foundDevice(deviceName))
     }
     
+    // Called when a service is dicovered for connected peripheral
     public func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
-        for services in peripheral.services! {
-            if !discoveredServices.containsObject(services){
-                discoveredServices.addObject(services)
+        for service in peripheral.services! {
+            if !discoveredServices.containsObject(service){
+                discoveredServices.addObject(service)
+                discoveredCharacteristics.addObject(NSMutableArray())
+                discoveredDescriptors.addObject(NSMutableArray())
+                
                 SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.discoveredService)
-                peripheral.discoverCharacteristics(nil, forService: services)
+                
+                peripheral.discoverCharacteristics(nil, forService: service)
                 SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.discoverCharacteristics)
             }
         }
     }
     
+    // Called when a Characterisic is doscovered for peripheral
     public func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
+        let characteristicArrayIndex = discoveredServices.indexOfObject(service)
+        let charactersiticArray = discoveredCharacteristics[characteristicArrayIndex] as! NSMutableArray
         
-        SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.discoveredCharacteristic)
-        for test in service.characteristics!{
-            let test2 = test.isBroadcasted
-            let test3 = test.isNotifying
-            let test4 = test.properties
-            let test5 = test.value
-            peripheral.discoverDescriptorsForCharacteristic(test)
-            peripheral.readValueForCharacteristic(test)
+        for characteristic in charactersiticArray {
+            if !charactersiticArray.containsObject(characteristic) {
+                charactersiticArray.addObject(characteristic)
+                SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.discoveredCharacteristic)
+                
+                peripheral.discoverDescriptorsForCharacteristic(characteristic as! CBCharacteristic)
+                peripheral.readValueForCharacteristic(characteristic as! CBCharacteristic)
+            }
         }
     }
     
+    // called when a Descriptor is discovered relating to a service
     public func peripheral(peripheral: CBPeripheral, didDiscoverDescriptorsForCharacteristic characteristic: CBCharacteristic, error: NSError?){
         print("descriptors = \(characteristic.descriptors)")
     }
     
+    // called when the value for a characteristic is updated
     public func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         print("Value = \(characteristic.value)")
     }

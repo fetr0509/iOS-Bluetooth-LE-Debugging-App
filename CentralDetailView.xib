@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CentralDetailView" customModule="Bluetooth_Debugger" customModuleProvider="target">
             <connections>
                 <outlet property="deviceLabel" destination="GMd-Sq-hvB" id="49H-Gc-Y8Z"/>
+                <outlet property="infoTableView" destination="Qd5-sf-rBc" id="cxY-cX-pcQ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="piQ-XA-kcl"/>
             </connections>
         </placeholder>
@@ -18,12 +19,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMd-Sq-hvB">
-                    <rect key="frame" x="279" y="8" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hie-3w-gKn">
                     <rect key="frame" x="15" y="8" width="46" height="21"/>
                     <constraints>
@@ -34,13 +29,27 @@
                         <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="jtu-Nr-Ctc"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qd5-sf-rBc">
+                    <rect key="frame" x="0.0" y="37" width="600" height="563"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMd-Sq-hvB">
+                    <rect key="frame" x="279" y="8" width="45" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Hie-3w-gKn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="27R-ay-WJK"/>
+                <constraint firstItem="Qd5-sf-rBc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3WN-JS-x9C"/>
+                <constraint firstAttribute="trailing" secondItem="Qd5-sf-rBc" secondAttribute="trailing" id="65d-3A-MX7"/>
                 <constraint firstItem="Hie-3w-gKn" firstAttribute="baseline" secondItem="GMd-Sq-hvB" secondAttribute="firstBaseline" id="8uD-4I-3T2"/>
                 <constraint firstItem="GMd-Sq-hvB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="9X9-15-bNi"/>
                 <constraint firstItem="Hie-3w-gKn" firstAttribute="top" secondItem="GMd-Sq-hvB" secondAttribute="top" id="UpW-Xr-4nu"/>
+                <constraint firstItem="Qd5-sf-rBc" firstAttribute="top" secondItem="Hie-3w-gKn" secondAttribute="bottom" constant="8" symbolic="YES" id="XeG-yP-ed8"/>
+                <constraint firstAttribute="bottom" secondItem="Qd5-sf-rBc" secondAttribute="bottom" id="iIQ-Ze-S5U"/>
                 <constraint firstItem="Hie-3w-gKn" firstAttribute="firstBaseline" secondItem="GMd-Sq-hvB" secondAttribute="firstBaseline" id="jVc-5g-bC4"/>
                 <constraint firstItem="GMd-Sq-hvB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tJT-Hj-o2j"/>
             </constraints>

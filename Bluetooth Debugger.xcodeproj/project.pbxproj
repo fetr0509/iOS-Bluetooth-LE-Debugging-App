@@ -126,14 +126,14 @@
 				DED8E7611D15EA6300C307A5 /* AppDelegate.swift */,
 				DED8E79D1D17D34100C307A5 /* BLEPeripheral.swift */,
 				DED8E79F1D17D34A00C307A5 /* BLECentral.swift */,
+				DEF6B59C1D35ACDE00C3C459 /* Debugger Text Handling  */,
 				DED8E7A91D17D55F00C307A5 /* Views */,
+				DEF6B59F1D35B61500C3C459 /* Custom Expandable Cells */,
+				DED8E7B61D17D6DC00C307A5 /* XIBs */,
 				DED8E7681D15EA6300C307A5 /* Assets.xcassets */,
 				DED8E7651D15EA6300C307A5 /* Main.storyboard */,
 				DED8E76A1D15EA6300C307A5 /* LaunchScreen.storyboard */,
 				DED8E76D1D15EA6300C307A5 /* Info.plist */,
-				DED051511D287EE600B02DCE /* SharedDebuggerInstance.swift */,
-				DED051531D287F2100B02DCE /* DebuggerTextHandler.swift */,
-				DED051551D28830A00B02DCE /* DebuggerStrings.swift */,
 			);
 			path = "Bluetooth Debugger";
 			sourceTree = "<group>";
@@ -165,7 +165,6 @@
 				DED8E7951D177B9000C307A5 /* CentralViewController.swift */,
 				DED051591D2B2B9F00B02DCE /* CentralDetailView.swift */,
 				DED8E7B71D17D79E00C307A5 /* PeripheralViewController.swift */,
-				DED8E7B61D17D6DC00C307A5 /* XIBs */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -178,6 +177,23 @@
 				DED0515B1D2B2BCD00B02DCE /* CentralDetailView.xib */,
 			);
 			name = XIBs;
+			sourceTree = "<group>";
+		};
+		DEF6B59C1D35ACDE00C3C459 /* Debugger Text Handling  */ = {
+			isa = PBXGroup;
+			children = (
+				DED051511D287EE600B02DCE /* SharedDebuggerInstance.swift */,
+				DED051531D287F2100B02DCE /* DebuggerTextHandler.swift */,
+				DED051551D28830A00B02DCE /* DebuggerStrings.swift */,
+			);
+			name = "Debugger Text Handling ";
+			sourceTree = "<group>";
+		};
+		DEF6B59F1D35B61500C3C459 /* Custom Expandable Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Custom Expandable Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
