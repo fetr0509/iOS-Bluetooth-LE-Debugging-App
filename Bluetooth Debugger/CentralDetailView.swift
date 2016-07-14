@@ -14,8 +14,11 @@ class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var infoTableView: UITableView!
     @IBOutlet weak var deviceLabel: UILabel!
     
-    var selectedIndex: Int?
+    var selectedIndex: Int? // index selected in previous view
     var centralReference: BLECentral?
+    
+    var discoveredServices: NSArray = []
+    var discoveredCharacteristics: NSArray = []
     
     override func viewDidLoad() {
         centralReference?.connectToDevice(selectedIndex!)
@@ -40,18 +43,23 @@ class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // MARK: TableView Delegate Methods
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return discoveredServices.count
     }
     
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let service = discoveredServices[section] as! CBService
+        return "Service: \(service.UUID)"
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        let arrayForService = discoveredCharacteristics[section] as! NSArray
+        return arrayForService.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         self.infoTableView.separatorColor = UIColor.clearColor()
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         cell.selectionStyle = .None
-
+        
         
         return cell
     }

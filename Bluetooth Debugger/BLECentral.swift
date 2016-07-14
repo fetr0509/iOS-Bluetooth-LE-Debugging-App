@@ -22,7 +22,6 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
     var deviceNameList: NSMutableArray = [] // list of discovered device names (for tableview)
     var discoveredServices: NSMutableArray = [] // list of discovered services
     var discoveredCharacteristics: NSMutableArray = []
-    var discoveredDescriptors: NSMutableArray = [] // list of discovered service descriptors
     var centralManager: CBCentralManager!
     var connectedDevice: CBPeripheral? = nil // set when device is succefully connected to
     
@@ -157,7 +156,6 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
             if !discoveredServices.containsObject(service){
                 discoveredServices.addObject(service)
                 discoveredCharacteristics.addObject(NSMutableArray())
-                discoveredDescriptors.addObject(NSMutableArray())
                 
                 SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.discoveredService)
                 
@@ -167,7 +165,7 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         }
     }
     
-    // Called when a Characterisic is doscovered for peripheral
+    // Called when a Characterisic is discovered for peripheral
     public func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
         let characteristicArrayIndex = discoveredServices.indexOfObject(service)
         let charactersiticArray = discoveredCharacteristics[characteristicArrayIndex] as! NSMutableArray
@@ -181,15 +179,22 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
                 peripheral.readValueForCharacteristic(characteristic as! CBCharacteristic)
             }
         }
+        if detailDelegate != nil {
+            self.detailDelegate?.hasUpdateDetail!(self)
+        }
     }
     
     // called when a Descriptor is discovered relating to a service
     public func peripheral(peripheral: CBPeripheral, didDiscoverDescriptorsForCharacteristic characteristic: CBCharacteristic, error: NSError?){
-        print("descriptors = \(characteristic.descriptors)")
+        if detailDelegate != nil {
+            self.detailDelegate?.hasUpdateDetail!(self)
+        }
     }
     
     // called when the value for a characteristic is updated
     public func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        print("Value = \(characteristic.value)")
+        if detailDelegate != nil {
+            self.detailDelegate?.hasUpdateDetail!(self)
+        }
     }
 }
