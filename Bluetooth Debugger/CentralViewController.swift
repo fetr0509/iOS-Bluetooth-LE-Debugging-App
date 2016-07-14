@@ -18,14 +18,16 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var deviceTableView: UITableView!
     
     override func viewDidLoad() {
-        central.delegate = self
+        central.mainDelegate = self
     }
     
-    func hasUpdate(sender: BLECentral){
+    // MARK: BluetoothCentral Delegate Methods
+    func hasUpdateDevice(sender: BLECentral){
         self.deviceNameList = central.deviceNameList
         deviceTableView.reloadData()
     }
     
+    // MARK: TableView Delegate Methods
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let centralDetailView = CentralDetailView()

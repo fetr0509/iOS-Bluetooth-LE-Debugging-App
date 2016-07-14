@@ -12,8 +12,8 @@ import CoreBluetooth
 // These delegate protocols allow the Main Central View and Detail View to know
 // When an update is available for their respective tableviews
 @objc protocol BLECentralControllerDelegate: class {
-    func hasUpdateDevice(sender: BLECentral)
-    func hasUpdateDetail(sender: BLECentral)
+    optional func hasUpdateDevice(sender: BLECentral)
+    optional func hasUpdateDetail(sender: BLECentral)
 }
 
 public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
@@ -67,6 +67,8 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         centralManager.scanForPeripheralsWithServices(nil, options: nil)
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.startedScanning)
     }
+    
+    // MARK: Delegate Methods
     
     // Called when the hardware state is updated.
     public func centralManagerDidUpdateState(central: CBCentralManager) {
@@ -145,7 +147,7 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
             deviceNameList.addObject("Unknown Device")
         }
         
-        mainDelegate?.hasUpdateDevice(self)
+        mainDelegate?.hasUpdateDevice!(self)
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.foundDevice(deviceName))
     }
     

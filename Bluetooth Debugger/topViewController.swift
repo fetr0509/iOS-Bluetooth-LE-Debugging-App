@@ -15,6 +15,7 @@ class topViewController: UIViewController, DebuggerTextHandlerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.delegate = self
+        
     }
     
     override func didReceiveMemoryWarning() {

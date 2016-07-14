@@ -159,9 +159,9 @@
 		DED8E7A91D17D55F00C307A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DED8E7911D160CBA00C307A5 /* SplitScreenViewController.swift */,
 				DED051571D28855700B02DCE /* topViewController.swift */,
 				DED8E7991D17B01000C307A5 /* bottomViewController.swift */,
-				DED8E7911D160CBA00C307A5 /* SplitScreenViewController.swift */,
 				DED8E7951D177B9000C307A5 /* CentralViewController.swift */,
 				DED051591D2B2B9F00B02DCE /* CentralDetailView.swift */,
 				DED8E7B71D17D79E00C307A5 /* PeripheralViewController.swift */,

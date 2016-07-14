@@ -9,10 +9,11 @@
 import UIKit
 import CoreBluetooth
 
-class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataSource, BLECentralControllerDelegate {
 
     @IBOutlet weak var infoTableView: UITableView!
     @IBOutlet weak var deviceLabel: UILabel!
+    
     var selectedIndex: Int?
     var centralReference: BLECentral?
     
@@ -20,8 +21,11 @@ class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataS
         centralReference?.connectToDevice(selectedIndex!)
         self.deviceLabel.text = centralReference?.deviceNameList[selectedIndex!] as? String
         self.infoTableView.separatorColor = UIColor.clearColor()
+        centralReference?.detailDelegate = self
     }
     
+    
+    // MARK: UI Action Methods
     @IBAction func backButtonPressed(sender: AnyObject) {
         centralReference?.disconnectDevice()
         self.willMoveToParentViewController(nil)
@@ -29,6 +33,12 @@ class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataS
         self.removeFromParentViewController()
     }
     
+    // MARK: BluetoothCentral Delegate Methods
+    func hasUpdateDetail(sender: BLECentral) {
+        
+    }
+    
+    // MARK: TableView Delegate Methods
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
