@@ -27,6 +27,8 @@
 		DED8E7B81D17D79E00C307A5 /* PeripheralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8E7B71D17D79E00C307A5 /* PeripheralViewController.swift */; };
 		DED8E7BC1D17E00400C307A5 /* CentralView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED8E7BB1D17E00400C307A5 /* CentralView.xib */; };
 		DED8E7BE1D17E01300C307A5 /* PeripheralView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED8E7BD1D17E01300C307A5 /* PeripheralView.xib */; };
+		DEF6B5A71D38369500C3C459 /* ExpandableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF6B5A61D38369500C3C459 /* ExpandableCell.swift */; };
+		DEF6B5AB1D38441300C3C459 /* ExpandableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		DED8E7B71D17D79E00C307A5 /* PeripheralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralViewController.swift; sourceTree = "<group>"; };
 		DED8E7BB1D17E00400C307A5 /* CentralView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CentralView.xib; sourceTree = "<group>"; };
 		DED8E7BD1D17E01300C307A5 /* PeripheralView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeripheralView.xib; sourceTree = "<group>"; };
+		DEF6B5A61D38369500C3C459 /* ExpandableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableCell.swift; sourceTree = "<group>"; };
+		DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,7 @@
 				DED8E7BD1D17E01300C307A5 /* PeripheralView.xib */,
 				DED8E7BB1D17E00400C307A5 /* CentralView.xib */,
 				DED0515B1D2B2BCD00B02DCE /* CentralDetailView.xib */,
+				DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 		DEF6B59F1D35B61500C3C459 /* Custom Expandable Cells */ = {
 			isa = PBXGroup;
 			children = (
+				DEF6B5A61D38369500C3C459 /* ExpandableCell.swift */,
 			);
 			name = "Custom Expandable Cells";
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 				DED8E76C1D15EA6300C307A5 /* LaunchScreen.storyboard in Resources */,
 				DED8E7691D15EA6300C307A5 /* Assets.xcassets in Resources */,
 				DED0515C1D2B2BCD00B02DCE /* CentralDetailView.xib in Resources */,
+				DEF6B5AB1D38441300C3C459 /* ExpandableCell.xib in Resources */,
 				DED8E7671D15EA6300C307A5 /* Main.storyboard in Resources */,
 				DED8E7BE1D17E01300C307A5 /* PeripheralView.xib in Resources */,
 			);
@@ -342,6 +349,7 @@
 				DED8E7B81D17D79E00C307A5 /* PeripheralViewController.swift in Sources */,
 				DED8E7621D15EA6300C307A5 /* AppDelegate.swift in Sources */,
 				DED8E7A01D17D34A00C307A5 /* BLECentral.swift in Sources */,
+				DEF6B5A71D38369500C3C459 /* ExpandableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

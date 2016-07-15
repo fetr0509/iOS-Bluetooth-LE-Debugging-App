@@ -40,11 +40,13 @@
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iU4-TL-FC2">
                                 <rect key="frame" x="0.0" y="150" width="600" height="23"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.41960784313725491" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="dUZ-cg-nCm"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="^">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="toggleDebuggerView:" destination="TV0-pt-o43" eventType="touchUpInside" id="8ZQ-ek-k4a"/>
                                 </connections>
@@ -125,9 +127,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OUp-8a-oRa">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUp-8a-oRa">
                                 <rect key="frame" x="14" y="10" width="571" height="95"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.72549019609999998" green="0.84313725490000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -138,14 +140,14 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Clear Debugger Window">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="clearDebuggingInfo:" destination="ApN-3m-Cwr" eventType="touchUpInside" id="MBy-Lj-c8r"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.071639560163021088" green="0.99777776002883911" blue="0.0083583621308207512" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.50196078430000002" green="0.70980392160000005" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="OUp-8a-oRa" firstAttribute="top" secondItem="Jd4-bc-WOB" secondAttribute="bottom" constant="10" id="B0C-gy-OFI"/>
                             <constraint firstItem="QFl-eH-s2W" firstAttribute="bottom" secondItem="KnB-1Q-Gqs" secondAttribute="top" id="Dab-Ie-oaP"/>

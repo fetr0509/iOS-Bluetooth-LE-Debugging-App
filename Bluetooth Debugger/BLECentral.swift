@@ -170,13 +170,13 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         let characteristicArrayIndex = discoveredServices.indexOfObject(service)
         let charactersiticArray = discoveredCharacteristics[characteristicArrayIndex] as! NSMutableArray
         
-        for characteristic in charactersiticArray {
+        for characteristic in service.characteristics! {
             if !charactersiticArray.containsObject(characteristic) {
                 charactersiticArray.addObject(characteristic)
                 SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.discoveredCharacteristic)
                 
-                peripheral.discoverDescriptorsForCharacteristic(characteristic as! CBCharacteristic)
-                peripheral.readValueForCharacteristic(characteristic as! CBCharacteristic)
+                peripheral.discoverDescriptorsForCharacteristic(characteristic )
+                peripheral.readValueForCharacteristic(characteristic )
             }
         }
         if detailDelegate != nil {
