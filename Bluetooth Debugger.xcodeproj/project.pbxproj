@@ -27,6 +27,7 @@
 		DED8E7B81D17D79E00C307A5 /* PeripheralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8E7B71D17D79E00C307A5 /* PeripheralViewController.swift */; };
 		DED8E7BC1D17E00400C307A5 /* CentralView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED8E7BB1D17E00400C307A5 /* CentralView.xib */; };
 		DED8E7BE1D17E01300C307A5 /* PeripheralView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED8E7BD1D17E01300C307A5 /* PeripheralView.xib */; };
+		DEDC96961D3AEE0C00DBAAF5 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC96951D3AEE0C00DBAAF5 /* HelperFunctions.swift */; };
 		DEF6B5A71D38369500C3C459 /* ExpandableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF6B5A61D38369500C3C459 /* ExpandableCell.swift */; };
 		DEF6B5AB1D38441300C3C459 /* ExpandableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,7 @@
 		DED8E7B71D17D79E00C307A5 /* PeripheralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralViewController.swift; sourceTree = "<group>"; };
 		DED8E7BB1D17E00400C307A5 /* CentralView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CentralView.xib; sourceTree = "<group>"; };
 		DED8E7BD1D17E01300C307A5 /* PeripheralView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeripheralView.xib; sourceTree = "<group>"; };
+		DEDC96951D3AEE0C00DBAAF5 /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		DEF6B5A61D38369500C3C459 /* ExpandableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableCell.swift; sourceTree = "<group>"; };
 		DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +136,7 @@
 				DED8E7A91D17D55F00C307A5 /* Views */,
 				DEF6B59F1D35B61500C3C459 /* Custom Expandable Cells */,
 				DED8E7B61D17D6DC00C307A5 /* XIBs */,
+				DEDC96941D3AEDEA00DBAAF5 /* Helper Functions */,
 				DED8E7681D15EA6300C307A5 /* Assets.xcassets */,
 				DED8E7651D15EA6300C307A5 /* Main.storyboard */,
 				DED8E76A1D15EA6300C307A5 /* LaunchScreen.storyboard */,
@@ -182,6 +185,14 @@
 				DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */,
 			);
 			name = XIBs;
+			sourceTree = "<group>";
+		};
+		DEDC96941D3AEDEA00DBAAF5 /* Helper Functions */ = {
+			isa = PBXGroup;
+			children = (
+				DEDC96951D3AEE0C00DBAAF5 /* HelperFunctions.swift */,
+			);
+			name = "Helper Functions";
 			sourceTree = "<group>";
 		};
 		DEF6B59C1D35ACDE00C3C459 /* Debugger Text Handling  */ = {
@@ -344,6 +355,7 @@
 				DED051541D287F2100B02DCE /* DebuggerTextHandler.swift in Sources */,
 				DED051581D28855700B02DCE /* topViewController.swift in Sources */,
 				DED8E7961D177B9000C307A5 /* CentralViewController.swift in Sources */,
+				DEDC96961D3AEE0C00DBAAF5 /* HelperFunctions.swift in Sources */,
 				DED051561D28830A00B02DCE /* DebuggerStrings.swift in Sources */,
 				DED8E79E1D17D34100C307A5 /* BLEPeripheral.swift in Sources */,
 				DED8E7B81D17D79E00C307A5 /* PeripheralViewController.swift in Sources */,

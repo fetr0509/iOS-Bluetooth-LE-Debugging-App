@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CentralViewController" customModule="Bluetooth_Debugger" customModuleProvider="target">
@@ -18,18 +19,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hRe-HJ-IVv">
-                    <rect key="frame" x="8" y="50" width="584" height="542"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="34" width="600" height="558"/>
+                    <color key="backgroundColor" red="0.72549019609999998" green="0.84313725490000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="if5-fW-5xd"/>
                         <outlet property="delegate" destination="-1" id="84S-mo-hP8"/>
                     </connections>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for Devices..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGu-oT-zfg">
-                    <rect key="frame" x="8" y="8" width="189" height="34"/>
+                    <rect key="frame" x="14" y="5" width="189" height="23"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="189" id="2Fl-vT-JgE"/>
-                        <constraint firstAttribute="height" constant="34" id="Ij6-Sc-vcP"/>
+                        <constraint firstAttribute="height" constant="23" id="Upm-la-aBL"/>
+                        <constraint firstAttribute="width" constant="189" id="k97-LY-MUw"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,12 +39,12 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="hRe-HJ-IVv" secondAttribute="bottom" constant="8" id="E4x-Yq-aGv"/>
-                <constraint firstAttribute="trailing" secondItem="hRe-HJ-IVv" secondAttribute="trailing" constant="8" id="M0a-uS-LAl"/>
-                <constraint firstItem="xGu-oT-zfg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="PUo-ew-lEg"/>
-                <constraint firstItem="hRe-HJ-IVv" firstAttribute="top" secondItem="xGu-oT-zfg" secondAttribute="bottom" constant="8" id="rMV-v1-gzV"/>
-                <constraint firstItem="xGu-oT-zfg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="vyD-rT-fbQ"/>
-                <constraint firstItem="hRe-HJ-IVv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="xzW-IA-YgP"/>
+                <constraint firstItem="hRe-HJ-IVv" firstAttribute="top" secondItem="xGu-oT-zfg" secondAttribute="bottom" constant="6" id="0dz-le-i6W"/>
+                <constraint firstItem="hRe-HJ-IVv" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="6J2-ZS-7KG"/>
+                <constraint firstItem="xGu-oT-zfg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Day-b7-JZs"/>
+                <constraint firstAttribute="trailing" secondItem="hRe-HJ-IVv" secondAttribute="trailing" id="YPh-u3-zox"/>
+                <constraint firstItem="xGu-oT-zfg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="di8-jl-bLF"/>
+                <constraint firstItem="hRe-HJ-IVv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vZQ-xe-3gy"/>
             </constraints>
             <point key="canvasLocation" x="249" y="283"/>
         </view>

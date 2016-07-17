@@ -6,8 +6,8 @@
 //  Copyright © 2016 Peter Fetros. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import CoreBluetooth
 
 class ExpandableCell: UITableViewCell {
     
@@ -22,5 +22,24 @@ class ExpandableCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func populateData(characteristic: CBCharacteristic) -> Void {
+        self.descriptorTextView.layer.borderWidth = 1.0
+        self.descriptorTextView.layer.borderColor = UIColor.blackColor().CGColor
+        self.selectionStyle = .None
+        
+        self.UUIDLabel.text = HelperFunctions.getCharUUIDType(characteristic)
+        self.characteristicValue.text = HelperFunctions.decodeNSData(characteristic.value)
+        self.isNotifyingLabel.text = "\(characteristic.isNotifying)"
+        self.propertiesLabel.text = HelperFunctions.getPropertiesDescription(characteristic.properties)
+        var descriptorString: String = ""
+        if characteristic.descriptors != nil {
+            for descriptor in characteristic.descriptors! {
+                descriptorString = descriptorString.stringByAppendingString("UUID: \(descriptor.UUID)\n")
+                descriptorString = descriptorString.stringByAppendingString("Value: \(descriptor.value)\n")
+            }
+        }
+        self.descriptorTextView.text = descriptorString
     }
 }

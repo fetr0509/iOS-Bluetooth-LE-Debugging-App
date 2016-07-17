@@ -24,7 +24,8 @@ class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         centralReference?.connectToDevice(selectedIndex!)
         self.deviceLabel.text = centralReference?.deviceNameList[selectedIndex!] as? String
-        self.infoTableView.separatorColor = UIColor.clearColor()
+        self.infoTableView.separatorColor = UIColor.whiteColor()
+        self.infoTableView.separatorInset = UIEdgeInsetsZero
         centralReference?.detailDelegate = self
         let nib = UINib(nibName: "ExpandableCell", bundle: nil)
         infoTableView
@@ -62,17 +63,6 @@ class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
-    func convertNSData(data:NSData?) -> String {
-        if data == nil {
-            return "\(data)"
-        }
-        if let tryString = NSString(data: data!, encoding: NSUTF8StringEncoding) {
-            return tryString as String
-        }
-        
-        return "\(data)"
-    }
-    
     // MARK: UI Action Methods
     @IBAction func backButtonPressed(sender: AnyObject) {
         centralReference?.disconnectDevice()
@@ -106,10 +96,18 @@ class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataS
         
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-    {
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         let headerView = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 30))
-        headerView.backgroundColor = UIColor(red:0.00, green:0.42, blue:0.95, alpha:1.0)
+        headerView.backgroundColor = UIColor(red:0.50, green:0.71, blue:0.98, alpha:1.0)
+        self.tableView(tableView, titleForHeaderInSection: section)
+        let titleLabel = UILabel(frame: CGRectMake(headerView.frame.origin.x + 10, headerView.frame.origin.y, headerView.frame.width - 10, headerView.frame.height))
+        if discoveredServices.count > section {
+            let service = discoveredServices[section] as? CBService
+            titleLabel.text = "Service: \(HelperFunctions.getServiceUUIDType(service!))"
+        } else {
+            titleLabel.text = ""
+        }
+        headerView.addSubview(titleLabel)
         return headerView
     }
     
@@ -124,39 +122,27 @@ class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if expandedCells.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as! Bool == true {
-            return 323
+            return 252
         }
         return 44
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        self.infoTableView.separatorColor = UIColor.clearColor()
+        self.infoTableView.separatorColor = UIColor.whiteColor()
+        self.infoTableView.separatorInset = UIEdgeInsetsZero
         let arrayForService = discoveredCharacteristics[indexPath.section] as! NSArray
         let cellCharacteristic = arrayForService[indexPath.row] as! CBCharacteristic
         
         if expandedCells.objectAtIndex(indexPath.section).objectAtIndex(indexPath.row) as! Bool == true {
             let cell:ExpandableCell = self.infoTableView.dequeueReusableCellWithIdentifier("ExpandableCell_RID") as! ExpandableCell
-            cell.selectionStyle = .None
             let arrayForService = discoveredCharacteristics[indexPath.section] as! NSArray
             let cellCharacteristic = arrayForService[indexPath.row] as! CBCharacteristic
-            cell.UUIDLabel.text = "\(cellCharacteristic.UUID)"
-            cell.characteristicValue.text = convertNSData(cellCharacteristic.value)
-            print(cellCharacteristic.value)
-            cell.isNotifyingLabel.text = "\(cellCharacteristic.isNotifying)"
-            cell.propertiesLabel.text = getPropertiesDescription(cellCharacteristic.properties)
-            var descriptorString: String = ""
-            if cellCharacteristic.descriptors != nil {
-                for descriptor in cellCharacteristic.descriptors! {
-                    descriptorString = descriptorString.stringByAppendingString("UUID: \(descriptor.UUID)\n")
-                    descriptorString = descriptorString.stringByAppendingString("Value: \(descriptor.value)\n")
-                }
-            }
-            cell.descriptorTextView.text = descriptorString
+            cell.populateData(cellCharacteristic)
             return cell
         } else {
             let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
-            cell.backgroundColor = UIColor(red:0.50, green:0.71, blue:0.98, alpha:1.0)
-            cell.textLabel?.text = "\(cellCharacteristic.UUID)"
+            cell.backgroundColor = UIColor(red:185/255.0, green:215/255.0, blue:255/255.0, alpha:1.0)
+            cell.textLabel?.text = HelperFunctions.getCharUUIDType(cellCharacteristic)
             return cell
         }
     }

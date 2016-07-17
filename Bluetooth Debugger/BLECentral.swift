@@ -57,6 +57,8 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         if connectedDevice != nil {
             centralManager.cancelPeripheralConnection(connectedDevice!)
             connectedDevice = nil
+            discoveredServices.removeAllObjects()
+            discoveredCharacteristics.removeAllObjects()
             SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.attemptDisconnect)
         }
     }

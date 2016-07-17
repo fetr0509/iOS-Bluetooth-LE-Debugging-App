@@ -19,6 +19,8 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         central.mainDelegate = self
+        self.deviceTableView.separatorColor = UIColor.whiteColor()
+        self.deviceTableView.separatorInset = UIEdgeInsetsZero
     }
     
     // MARK: BluetoothCentral Delegate Methods
@@ -49,8 +51,11 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
+        self.deviceTableView.separatorColor = UIColor.whiteColor()
+        self.deviceTableView.separatorInset = UIEdgeInsetsZero
         
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
+        cell.backgroundColor = UIColor(red:185/255.0, green:215/255.0, blue:255/255.0, alpha:1.0)
         let deviceName: String = deviceNameList.objectAtIndex(indexPath.row) as! String
         cell.textLabel?.text = deviceName
         return cell
