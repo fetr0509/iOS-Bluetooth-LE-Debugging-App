@@ -10,6 +10,11 @@ import UIKit
 
 class SplitScreenViewController: UIViewController {
 
+    @IBOutlet weak var viewTopConstrain: NSLayoutConstraint!
+    @IBOutlet weak var buttonTopConstrain: NSLayoutConstraint!
+    @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var bottomViewHeightCons: NSLayoutConstraint!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var toggleButton: UIButton!
     @IBOutlet weak var bottomView: UIView!
@@ -23,40 +28,28 @@ class SplitScreenViewController: UIViewController {
         self.view.bringSubviewToFront(tabbar)
         // Do any additional setup after loading the view.
     }
-    
-    
-    @IBAction func toggleDebuggerView(sender: AnyObject) {
-        if debuggerVisible {
-            UIView.animateWithDuration(0.5, animations: {
-                
-                self.topView.frame = CGRectMake(0, -self.topView.frame.size.height+20, self.topView.frame.size.width, self.topView.frame.size.height)
-                
-                self.toggleButton.frame = CGRectMake(0, 20, self.toggleButton.frame.size.width, self.toggleButton.frame.size.height)
-                
-                let newOriginY = self.toggleButton.frame.size.height + self.toggleButton.frame.origin.y
-                let newHeight = self.tabbar.frame.origin.y - newOriginY
-                self.bottomView.frame = CGRectMake(0, newOriginY, self.toggleButton.frame.size.width, newHeight)
-                
-                
-                }, completion: {(Bool) in self.setScreenVisible()})
-        } else {
-            UIView.animateWithDuration(0.5, animations: {
-                
-                self.topView.frame = CGRectMake(0, 20, self.topView.frame.size.width, self.topView.frame.size.height)
-                
-                self.toggleButton.frame = CGRectMake(0, self.topView.frame.origin.y + self.topView.frame.size.height, self.toggleButton.frame.size.width, self.toggleButton.frame.size.height)
-                
-                let newOrigin = self.toggleButton.frame.origin.y + self.toggleButton.frame.size.height
-                let newHeight = self.view.frame.size.height - newOrigin - self.tabbar.frame.size.height
-                
-                self.bottomView.frame = CGRectMake(0, newOrigin, self.toggleButton.frame.size.width, newHeight)
-                
-                }, completion: {(Bool) in self.setScreenVisible()})
-        }
-    }
-    
-    func setScreenVisible() -> Void {
+
+    // Toggle value to know when top view is visible (for animating)
+    func setDebuggerVisible() -> Void {
         self.debuggerVisible = !debuggerVisible
     }
-
+    
+    @IBAction func toggleDebuggerView(sender: AnyObject) {
+        
+        if debuggerVisible {
+            self.toggleButton.setImage(UIImage(named: "DownArrow"), forState: .Normal)
+            UIView.animateWithDuration(0.5, animations: {
+                self.bottomViewHeightCons.constant += self.topView.frame.size.height
+                self.viewTopConstrain.constant = -self.topView.frame.height
+                self.view.layoutIfNeeded()
+                }, completion: {(finished: Bool) in self.setDebuggerVisible()})
+        } else {
+            toggleButton.setImage(UIImage(named: "UpArrow"), forState: .Normal)
+            UIView.animateWithDuration(0.5, animations: {
+                self.bottomViewHeightCons.constant -= self.topView.frame.size.height
+                self.viewTopConstrain.constant = 0
+                self.view.layoutIfNeeded()
+                }, completion: {(Bool) in self.setDebuggerVisible()})
+        }
+    }
 }

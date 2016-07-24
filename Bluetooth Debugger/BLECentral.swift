@@ -14,6 +14,7 @@ import CoreBluetooth
 @objc protocol BLECentralControllerDelegate: class {
     optional func hasUpdateDevice(sender: BLECentral)
     optional func hasUpdateDetail(sender: BLECentral)
+    optional func statusChanged(sender: BLECentral, on: Bool)
 }
 
 public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate  {
@@ -32,7 +33,7 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
     override init(){
         super.init()
         // initialize the Central Manager
-        centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
+        centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue(), options: [CBCentralManagerOptionShowPowerAlertKey:false])
     }
     
     // Get the actual device using the index selected in the TableView
@@ -76,10 +77,14 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         switch central.state {
         case CBCentralManagerState.PoweredOn:
             SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.centralChangedState("powered on"))
+            mainDelegate!.statusChanged!(self, on: true)
             startScanning()
             break
         case CBCentralManagerState.PoweredOff:
             SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.centralChangedState("powered off"))
+            if mainDelegate != nil {
+                mainDelegate!.statusChanged!(self, on: false)
+            }
             break
         case CBCentralManagerState.Resetting:
             SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.centralChangedState("resetting"))

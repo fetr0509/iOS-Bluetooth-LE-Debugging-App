@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OffWarningView" customModule="Bluetooth_Debugger" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="qYR-Ea-qmn"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bluetooth_FM_White" translatesAutoresizingMaskIntoConstraints="NO" id="Mzy-pu-f4l">
+                    <rect key="frame" x="84" y="84" width="432" height="432"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLUETOOTH NOT ENABLED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="cnz-gr-wyN">
+                    <rect key="frame" x="8" y="8" width="584" height="68"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="68" id="bCJ-vM-nqy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="43"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app requires Bluetooth to work properly. Please enable Bluetooth on your phone to continue." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYb-S0-OLa">
+                    <rect key="frame" x="8" y="519" width="584" height="73"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.43137254899999999" green="0.63921568630000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="RYb-S0-OLa" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="54A-3F-wFV"/>
+                <constraint firstItem="cnz-gr-wyN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="HNY-zN-RrG"/>
+                <constraint firstItem="cnz-gr-wyN" firstAttribute="trailing" secondItem="RYb-S0-OLa" secondAttribute="trailing" id="L11-96-aue"/>
+                <constraint firstItem="cnz-gr-wyN" firstAttribute="centerX" secondItem="Mzy-pu-f4l" secondAttribute="centerX" id="RYi-YG-jgD"/>
+                <constraint firstItem="RYb-S0-OLa" firstAttribute="top" secondItem="Mzy-pu-f4l" secondAttribute="bottom" constant="3" id="eRo-vQ-Rk3"/>
+                <constraint firstItem="Mzy-pu-f4l" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="kUu-3a-Ssq"/>
+                <constraint firstItem="cnz-gr-wyN" firstAttribute="leading" secondItem="RYb-S0-OLa" secondAttribute="leading" id="rFd-HX-cAc"/>
+                <constraint firstItem="Mzy-pu-f4l" firstAttribute="top" secondItem="cnz-gr-wyN" secondAttribute="bottom" constant="8" symbolic="YES" id="srw-3I-QD3"/>
+                <constraint firstItem="cnz-gr-wyN" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="wmc-dt-KQ8"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="Bluetooth_FM_White" width="432" height="432"/>
+    </resources>
+</document>

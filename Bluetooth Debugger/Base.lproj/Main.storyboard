@@ -38,13 +38,13 @@
                                     <segue destination="XhI-xY-p5i" kind="embed" id="XrN-w4-BnA"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iU4-TL-FC2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iU4-TL-FC2">
                                 <rect key="frame" x="0.0" y="150" width="600" height="23"/>
-                                <color key="backgroundColor" red="0.0" green="0.41960784313725491" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.4823529411764706" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="dUZ-cg-nCm"/>
                                 </constraints>
-                                <state key="normal" title="^">
+                                <state key="normal" image="UpArrow">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -81,16 +81,20 @@
                             <constraint firstAttribute="trailingMargin" secondItem="1HW-US-A6r" secondAttribute="trailing" constant="-20" id="k5n-Fz-fsT"/>
                             <constraint firstItem="0Gi-M0-teg" firstAttribute="leading" secondItem="uce-hs-nc3" secondAttribute="leadingMargin" constant="-20" id="l66-XU-ncn"/>
                             <constraint firstItem="1HW-US-A6r" firstAttribute="top" secondItem="1I9-fv-c8s" secondAttribute="bottom" id="nsl-M4-mk3"/>
-                            <constraint firstItem="0Gi-M0-teg" firstAttribute="top" secondItem="aE2-QY-fl4" secondAttribute="bottom" id="tR0-9H-weV"/>
+                            <constraint firstItem="0Gi-M0-teg" firstAttribute="top" secondItem="aE2-QY-fl4" secondAttribute="bottom" priority="750" id="tR0-9H-weV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Gi-M0-teg" secondAttribute="trailing" constant="-20" id="vZe-ln-LBB"/>
                             <constraint firstItem="iU4-TL-FC2" firstAttribute="top" secondItem="0Gi-M0-teg" secondAttribute="bottom" id="xzi-cY-AQG"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="1I9-fv-c8s" id="iD5-u9-jpw"/>
+                        <outlet property="bottomViewHeightCons" destination="xe8-05-bmh" id="Xzc-da-eLR"/>
+                        <outlet property="buttonBottomConstraint" destination="Wct-4I-Zid" id="dwI-cm-kV6"/>
+                        <outlet property="buttonTopConstrain" destination="xzi-cY-AQG" id="o6y-WK-BAP"/>
                         <outlet property="tabbar" destination="1HW-US-A6r" id="6Pz-IW-sT1"/>
                         <outlet property="toggleButton" destination="iU4-TL-FC2" id="2bU-cN-tlq"/>
                         <outlet property="topView" destination="0Gi-M0-teg" id="iWC-Qf-V0d"/>
+                        <outlet property="viewTopConstrain" destination="tR0-9H-weV" id="LI6-15-QgX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UO9-pf-1FC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -167,4 +171,7 @@
             <point key="canvasLocation" x="945" y="682"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="UpArrow" width="600" height="23"/>
+    </resources>
 </document>

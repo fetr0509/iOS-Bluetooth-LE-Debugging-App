@@ -28,6 +28,8 @@
 		DED8E7BC1D17E00400C307A5 /* CentralView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED8E7BB1D17E00400C307A5 /* CentralView.xib */; };
 		DED8E7BE1D17E01300C307A5 /* PeripheralView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED8E7BD1D17E01300C307A5 /* PeripheralView.xib */; };
 		DEDC96961D3AEE0C00DBAAF5 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC96951D3AEE0C00DBAAF5 /* HelperFunctions.swift */; };
+		DEDC96A51D43633800DBAAF5 /* OffWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC96A41D43633800DBAAF5 /* OffWarningView.swift */; };
+		DEDC96A91D43712400DBAAF5 /* OffWarningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEDC96A81D43712400DBAAF5 /* OffWarningView.xib */; };
 		DEF6B5A71D38369500C3C459 /* ExpandableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF6B5A61D38369500C3C459 /* ExpandableCell.swift */; };
 		DEF6B5AB1D38441300C3C459 /* ExpandableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */; };
 /* End PBXBuildFile section */
@@ -77,6 +79,8 @@
 		DED8E7BB1D17E00400C307A5 /* CentralView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CentralView.xib; sourceTree = "<group>"; };
 		DED8E7BD1D17E01300C307A5 /* PeripheralView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeripheralView.xib; sourceTree = "<group>"; };
 		DEDC96951D3AEE0C00DBAAF5 /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		DEDC96A41D43633800DBAAF5 /* OffWarningView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffWarningView.swift; sourceTree = "<group>"; };
+		DEDC96A81D43712400DBAAF5 /* OffWarningView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffWarningView.xib; sourceTree = "<group>"; };
 		DEF6B5A61D38369500C3C459 /* ExpandableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableCell.swift; sourceTree = "<group>"; };
 		DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,7 +137,8 @@
 				DED8E79D1D17D34100C307A5 /* BLEPeripheral.swift */,
 				DED8E79F1D17D34A00C307A5 /* BLECentral.swift */,
 				DEF6B59C1D35ACDE00C3C459 /* Debugger Text Handling  */,
-				DED8E7A91D17D55F00C307A5 /* Views */,
+				DED8E7A91D17D55F00C307A5 /* Main Views */,
+				DEDC96A31D43631300DBAAF5 /* Auxilary Views */,
 				DEF6B59F1D35B61500C3C459 /* Custom Expandable Cells */,
 				DED8E7B61D17D6DC00C307A5 /* XIBs */,
 				DEDC96941D3AEDEA00DBAAF5 /* Helper Functions */,
@@ -163,7 +168,7 @@
 			path = "Bluetooth DebuggerUITests";
 			sourceTree = "<group>";
 		};
-		DED8E7A91D17D55F00C307A5 /* Views */ = {
+		DED8E7A91D17D55F00C307A5 /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
 				DED8E7911D160CBA00C307A5 /* SplitScreenViewController.swift */,
@@ -173,7 +178,7 @@
 				DED051591D2B2B9F00B02DCE /* CentralDetailView.swift */,
 				DED8E7B71D17D79E00C307A5 /* PeripheralViewController.swift */,
 			);
-			name = Views;
+			name = "Main Views";
 			sourceTree = "<group>";
 		};
 		DED8E7B61D17D6DC00C307A5 /* XIBs */ = {
@@ -183,6 +188,7 @@
 				DED8E7BB1D17E00400C307A5 /* CentralView.xib */,
 				DED0515B1D2B2BCD00B02DCE /* CentralDetailView.xib */,
 				DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */,
+				DEDC96A81D43712400DBAAF5 /* OffWarningView.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -193,6 +199,14 @@
 				DEDC96951D3AEE0C00DBAAF5 /* HelperFunctions.swift */,
 			);
 			name = "Helper Functions";
+			sourceTree = "<group>";
+		};
+		DEDC96A31D43631300DBAAF5 /* Auxilary Views */ = {
+			isa = PBXGroup;
+			children = (
+				DEDC96A41D43633800DBAAF5 /* OffWarningView.swift */,
+			);
+			name = "Auxilary Views";
 			sourceTree = "<group>";
 		};
 		DEF6B59C1D35ACDE00C3C459 /* Debugger Text Handling  */ = {
@@ -324,6 +338,7 @@
 				DEF6B5AB1D38441300C3C459 /* ExpandableCell.xib in Resources */,
 				DED8E7671D15EA6300C307A5 /* Main.storyboard in Resources */,
 				DED8E7BE1D17E01300C307A5 /* PeripheralView.xib in Resources */,
+				DEDC96A91D43712400DBAAF5 /* OffWarningView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +373,7 @@
 				DEDC96961D3AEE0C00DBAAF5 /* HelperFunctions.swift in Sources */,
 				DED051561D28830A00B02DCE /* DebuggerStrings.swift in Sources */,
 				DED8E79E1D17D34100C307A5 /* BLEPeripheral.swift in Sources */,
+				DEDC96A51D43633800DBAAF5 /* OffWarningView.swift in Sources */,
 				DED8E7B81D17D79E00C307A5 /* PeripheralViewController.swift in Sources */,
 				DED8E7621D15EA6300C307A5 /* AppDelegate.swift in Sources */,
 				DED8E7A01D17D34A00C307A5 /* BLECentral.swift in Sources */,

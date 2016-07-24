@@ -21,6 +21,7 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hRe-HJ-IVv">
                     <rect key="frame" x="0.0" y="34" width="600" height="558"/>
                     <color key="backgroundColor" red="0.72549019609999998" green="0.84313725490000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="sectionIndexColor" red="0.43137254901960786" green="0.63921568627450975" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="if5-fW-5xd"/>
                         <outlet property="delegate" destination="-1" id="84S-mo-hP8"/>
