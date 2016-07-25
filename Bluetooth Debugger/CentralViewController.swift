@@ -9,12 +9,11 @@
 import UIKit
 import CoreBluetooth
 
-class CentralViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, BLECentralControllerDelegate {
+class CentralViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BLECentralControllerDelegate {
     
-    var central = BLECentral()
+    var central = InstanceCache.sharedInstance.BLECentralInstance
     var deviceNameList: NSMutableArray = []
     var BluetoothisOn: Bool = true
-    var offWarningView: OffWarningView = OffWarningView()
     
     @IBOutlet weak var searchingLabel: UILabel!
     @IBOutlet weak var deviceTableView: UITableView!
@@ -23,11 +22,6 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
         central.mainDelegate = self
         self.deviceTableView.separatorColor = UIColor.whiteColor()
         self.deviceTableView.separatorInset = UIEdgeInsetsZero
-        
-        offWarningView.view.frame = CGRectMake(0, 0, 300, 400)
-        offWarningView.preferredContentSize = CGSize(width: 300, height: 400)
-        self.offWarningView.modalPresentationStyle = .Popover
-        offWarningView.popoverPresentationController!.delegate = self
     }
     
     // MARK: BluetoothCentral Delegate Methods
@@ -36,28 +30,11 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
         deviceTableView.reloadData()
     }
     
-    func statusChanged(sender: BLECentral, on: Bool){
-        if on == false {
-            
-            presentViewController(offWarningView, animated: true, completion: nil)
-            let popoverPresentationController = offWarningView.popoverPresentationController
-            popoverPresentationController?.sourceView = self.view
-            popoverPresentationController?.sourceRect = CGRectMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds), 0, 0)
-            popoverPresentationController?.delegate = self
-        }
-        else {
-            if BluetoothisOn == false {
-                
-            }
-        }
-    }
-    
     // MARK: TableView Delegate Methods
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let centralDetailView = CentralDetailView()
         centralDetailView.selectedIndex = indexPath.row
-        centralDetailView.centralReference = central
         centralDetailView.view.frame = self.view.frame
         
         self.view.addSubview(centralDetailView.view)
@@ -82,9 +59,5 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
         let deviceName: String = deviceNameList.objectAtIndex(indexPath.row) as! String
         cell.textLabel?.text = deviceName
         return cell
-    }
-    
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
     }
 }

@@ -28,8 +28,9 @@
 		DED8E7BC1D17E00400C307A5 /* CentralView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED8E7BB1D17E00400C307A5 /* CentralView.xib */; };
 		DED8E7BE1D17E01300C307A5 /* PeripheralView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED8E7BD1D17E01300C307A5 /* PeripheralView.xib */; };
 		DEDC96961D3AEE0C00DBAAF5 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC96951D3AEE0C00DBAAF5 /* HelperFunctions.swift */; };
-		DEDC96A51D43633800DBAAF5 /* OffWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC96A41D43633800DBAAF5 /* OffWarningView.swift */; };
-		DEDC96A91D43712400DBAAF5 /* OffWarningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEDC96A81D43712400DBAAF5 /* OffWarningView.xib */; };
+		DEDC96A51D43633800DBAAF5 /* BLEOffWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC96A41D43633800DBAAF5 /* BLEOffWarningView.swift */; };
+		DEE9DE651D467EBF00D0FCBD /* Singletons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE9DE641D467EBF00D0FCBD /* Singletons.swift */; };
+		DEE9DE671D46912800D0FCBD /* BLEOffWarningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE9DE661D46912800D0FCBD /* BLEOffWarningView.xib */; };
 		DEF6B5A71D38369500C3C459 /* ExpandableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF6B5A61D38369500C3C459 /* ExpandableCell.swift */; };
 		DEF6B5AB1D38441300C3C459 /* ExpandableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */; };
 /* End PBXBuildFile section */
@@ -79,8 +80,9 @@
 		DED8E7BB1D17E00400C307A5 /* CentralView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CentralView.xib; sourceTree = "<group>"; };
 		DED8E7BD1D17E01300C307A5 /* PeripheralView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeripheralView.xib; sourceTree = "<group>"; };
 		DEDC96951D3AEE0C00DBAAF5 /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
-		DEDC96A41D43633800DBAAF5 /* OffWarningView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffWarningView.swift; sourceTree = "<group>"; };
-		DEDC96A81D43712400DBAAF5 /* OffWarningView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffWarningView.xib; sourceTree = "<group>"; };
+		DEDC96A41D43633800DBAAF5 /* BLEOffWarningView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEOffWarningView.swift; sourceTree = "<group>"; };
+		DEE9DE641D467EBF00D0FCBD /* Singletons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singletons.swift; sourceTree = "<group>"; };
+		DEE9DE661D46912800D0FCBD /* BLEOffWarningView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLEOffWarningView.xib; sourceTree = "<group>"; };
 		DEF6B5A61D38369500C3C459 /* ExpandableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableCell.swift; sourceTree = "<group>"; };
 		DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +148,7 @@
 				DED8E7651D15EA6300C307A5 /* Main.storyboard */,
 				DED8E76A1D15EA6300C307A5 /* LaunchScreen.storyboard */,
 				DED8E76D1D15EA6300C307A5 /* Info.plist */,
+				DEE9DE641D467EBF00D0FCBD /* Singletons.swift */,
 			);
 			path = "Bluetooth Debugger";
 			sourceTree = "<group>";
@@ -188,7 +191,7 @@
 				DED8E7BB1D17E00400C307A5 /* CentralView.xib */,
 				DED0515B1D2B2BCD00B02DCE /* CentralDetailView.xib */,
 				DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */,
-				DEDC96A81D43712400DBAAF5 /* OffWarningView.xib */,
+				DEE9DE661D46912800D0FCBD /* BLEOffWarningView.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -204,7 +207,7 @@
 		DEDC96A31D43631300DBAAF5 /* Auxilary Views */ = {
 			isa = PBXGroup;
 			children = (
-				DEDC96A41D43633800DBAAF5 /* OffWarningView.swift */,
+				DEDC96A41D43633800DBAAF5 /* BLEOffWarningView.swift */,
 			);
 			name = "Auxilary Views";
 			sourceTree = "<group>";
@@ -336,9 +339,9 @@
 				DED8E7691D15EA6300C307A5 /* Assets.xcassets in Resources */,
 				DED0515C1D2B2BCD00B02DCE /* CentralDetailView.xib in Resources */,
 				DEF6B5AB1D38441300C3C459 /* ExpandableCell.xib in Resources */,
+				DEE9DE671D46912800D0FCBD /* BLEOffWarningView.xib in Resources */,
 				DED8E7671D15EA6300C307A5 /* Main.storyboard in Resources */,
 				DED8E7BE1D17E01300C307A5 /* PeripheralView.xib in Resources */,
-				DEDC96A91D43712400DBAAF5 /* OffWarningView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DED051521D287EE600B02DCE /* SharedDebuggerInstance.swift in Sources */,
+				DEE9DE651D467EBF00D0FCBD /* Singletons.swift in Sources */,
 				DED0515A1D2B2B9F00B02DCE /* CentralDetailView.swift in Sources */,
 				DED8E7921D160CBA00C307A5 /* SplitScreenViewController.swift in Sources */,
 				DED8E79A1D17B01000C307A5 /* bottomViewController.swift in Sources */,
@@ -373,7 +377,7 @@
 				DEDC96961D3AEE0C00DBAAF5 /* HelperFunctions.swift in Sources */,
 				DED051561D28830A00B02DCE /* DebuggerStrings.swift in Sources */,
 				DED8E79E1D17D34100C307A5 /* BLEPeripheral.swift in Sources */,
-				DEDC96A51D43633800DBAAF5 /* OffWarningView.swift in Sources */,
+				DEDC96A51D43633800DBAAF5 /* BLEOffWarningView.swift in Sources */,
 				DED8E7B81D17D79E00C307A5 /* PeripheralViewController.swift in Sources */,
 				DED8E7621D15EA6300C307A5 /* AppDelegate.swift in Sources */,
 				DED8E7A01D17D34A00C307A5 /* BLECentral.swift in Sources */,

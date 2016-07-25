@@ -132,16 +132,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUp-8a-oRa">
-                                <rect key="frame" x="14" y="10" width="571" height="95"/>
+                                <rect key="frame" x="30" y="10" width="540" height="86"/>
                                 <color key="backgroundColor" red="0.72549019609999998" green="0.84313725490000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFl-eH-s2W">
-                                <rect key="frame" x="404" y="109" width="181" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="181" id="FX0-qb-e4W"/>
-                                </constraints>
+                                <rect key="frame" x="392" y="100" width="178" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Clear Debugger Window">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -153,13 +150,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.50196078430000002" green="0.70980392160000005" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="OUp-8a-oRa" firstAttribute="top" secondItem="Jd4-bc-WOB" secondAttribute="bottom" constant="10" id="B0C-gy-OFI"/>
-                            <constraint firstItem="QFl-eH-s2W" firstAttribute="bottom" secondItem="KnB-1Q-Gqs" secondAttribute="top" id="Dab-Ie-oaP"/>
-                            <constraint firstItem="QFl-eH-s2W" firstAttribute="top" secondItem="OUp-8a-oRa" secondAttribute="bottom" constant="4" id="HZ7-AN-mpp"/>
-                            <constraint firstItem="QFl-eH-s2W" firstAttribute="trailing" secondItem="OUp-8a-oRa" secondAttribute="trailing" id="JOy-HO-OBX"/>
-                            <constraint firstItem="OUp-8a-oRa" firstAttribute="centerX" secondItem="hNU-9u-hdo" secondAttribute="centerX" id="Nhf-U5-A8k"/>
-                            <constraint firstItem="OUp-8a-oRa" firstAttribute="leading" secondItem="hNU-9u-hdo" secondAttribute="leadingMargin" constant="-6" id="bD1-k5-o9u"/>
-                            <constraint firstItem="OUp-8a-oRa" firstAttribute="centerY" secondItem="hNU-9u-hdo" secondAttribute="centerY" constant="-7.5" id="lkJ-Jn-agt"/>
+                            <constraint firstItem="QFl-eH-s2W" firstAttribute="top" secondItem="OUp-8a-oRa" secondAttribute="bottom" constant="4" id="FhH-kb-fva"/>
+                            <constraint firstItem="KnB-1Q-Gqs" firstAttribute="top" secondItem="QFl-eH-s2W" secondAttribute="bottom" id="Kk4-BC-yx7"/>
+                            <constraint firstItem="OUp-8a-oRa" firstAttribute="top" secondItem="Jd4-bc-WOB" secondAttribute="bottom" constant="10" id="QTw-cU-9uF"/>
+                            <constraint firstItem="OUp-8a-oRa" firstAttribute="leading" secondItem="hNU-9u-hdo" secondAttribute="leadingMargin" constant="10" id="baO-99-hLc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QFl-eH-s2W" secondAttribute="trailing" constant="10" id="s4w-Ro-lse"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OUp-8a-oRa" secondAttribute="trailing" constant="10" id="y5t-nc-BFE"/>
                         </constraints>
                     </view>
                     <connections>

@@ -9,6 +9,6 @@
 import Foundation
 import UIKit
 
-class OffWarningView: UIViewController {
-    
+class BLEOffWarningView: UIView {
+
 }

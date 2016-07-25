@@ -16,56 +16,25 @@ class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataS
     
     var selectedIndex: Int? // index selected in previous view
     var expandedCells: NSMutableArray = []
-    var centralReference: BLECentral?
+    var centralReference: BLECentral = InstanceCache.sharedInstance.BLECentralInstance
     
     var discoveredServices: NSArray = []
     var discoveredCharacteristics: NSArray = []
     
     override func viewDidLoad() {
-        centralReference?.connectToDevice(selectedIndex!)
-        self.deviceLabel.text = centralReference?.deviceNameList[selectedIndex!] as? String
+        centralReference.connectToDevice(selectedIndex!)
+        self.deviceLabel.text = centralReference.deviceNameList[selectedIndex!] as? String
         self.infoTableView.separatorColor = UIColor.whiteColor()
         self.infoTableView.separatorInset = UIEdgeInsetsZero
-        centralReference?.detailDelegate = self
+        centralReference.detailDelegate = self
         let nib = UINib(nibName: "ExpandableCell", bundle: nil)
         infoTableView
             .registerNib(nib, forCellReuseIdentifier: "ExpandableCell_RID")
     }
     
-    func getPropertiesDescription(property:CBCharacteristicProperties) -> String {
-        switch property {
-        case CBCharacteristicProperties.Broadcast:
-            return "Broadcast"
-        case CBCharacteristicProperties.Read:
-            return "Read"
-        case CBCharacteristicProperties.WriteWithoutResponse:
-            return "WriteWithoutResponse"
-        case CBCharacteristicProperties.Write:
-            return "Write"
-        case CBCharacteristicProperties.Notify:
-            return "Notify"
-        case CBCharacteristicProperties.Indicate:
-            return "Indicate"
-        case CBCharacteristicProperties.AuthenticatedSignedWrites:
-            return "AuthenticatedSignedWrites"
-        case CBCharacteristicProperties.ExtendedProperties:
-            return "ExtendedProperties"
-        case CBCharacteristicProperties.NotifyEncryptionRequired:
-            return "NotifyEncryptionRequired"
-        case CBCharacteristicProperties.IndicateEncryptionRequired:
-            return "IndicateEncryptionRequired"
-        case CBCharacteristicProperties(rawValue: UInt(18)):
-            return "Indication"
-        case CBCharacteristicProperties(rawValue: UInt(152)):
-            return "Send BLE Handle Value Confirmation"
-        default:
-           return "Unknown: \(property.rawValue)"
-        }
-    }
-    
     // MARK: UI Action Methods
     @IBAction func backButtonPressed(sender: AnyObject) {
-        centralReference?.disconnectDevice()
+        centralReference.disconnectDevice()
         self.willMoveToParentViewController(nil)
         self.view.removeFromSuperview()
         self.removeFromParentViewController()
@@ -73,8 +42,8 @@ class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // MARK: BluetoothCentral Delegate Methods
     func hasUpdateDetail(sender: BLECentral) {
-        discoveredServices = (centralReference?.discoveredServices)!
-        discoveredCharacteristics = (centralReference?.discoveredCharacteristics)!
+        discoveredServices = (centralReference.discoveredServices)
+        discoveredCharacteristics = (centralReference.discoveredCharacteristics)
         self.infoTableView.reloadData()
     }
     

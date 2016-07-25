@@ -9,6 +9,7 @@
 import Foundation
 import CoreBluetooth
 
+
 // These delegate protocols allow the Main Central View and Detail View to know
 // When an update is available for their respective tableviews
 @objc protocol BLECentralControllerDelegate: class {
@@ -28,7 +29,7 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
     
     weak var mainDelegate :BLECentralControllerDelegate?
     weak var detailDelegate :BLECentralControllerDelegate?
-    
+    weak var statusDelegate :BLECentralControllerDelegate?
     
     override init(){
         super.init()
@@ -77,13 +78,13 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         switch central.state {
         case CBCentralManagerState.PoweredOn:
             SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.centralChangedState("powered on"))
-            mainDelegate!.statusChanged!(self, on: true)
+            statusDelegate!.statusChanged!(self, on: true)
             startScanning()
             break
         case CBCentralManagerState.PoweredOff:
             SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.centralChangedState("powered off"))
             if mainDelegate != nil {
-                mainDelegate!.statusChanged!(self, on: false)
+                statusDelegate!.statusChanged!(self, on: false)
             }
             break
         case CBCentralManagerState.Resetting:
