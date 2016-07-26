@@ -13,6 +13,7 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var central = InstanceCache.sharedInstance.BLECentralInstance
     var deviceNameList: NSMutableArray = []
+    var deviceRSSIList: NSMutableArray = []
     var BluetoothisOn: Bool = true
     
     @IBOutlet weak var searchingLabel: UILabel!
@@ -22,11 +23,14 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
         central.mainDelegate = self
         self.deviceTableView.separatorColor = UIColor.whiteColor()
         self.deviceTableView.separatorInset = UIEdgeInsetsZero
+        let nib = UINib(nibName: "DeviceCell", bundle: nil)
+        deviceTableView.registerNib(nib, forCellReuseIdentifier: "DeviceCell_RID")
     }
     
     // MARK: BluetoothCentral Delegate Methods
     func hasUpdateDevice(sender: BLECentral){
         self.deviceNameList = central.deviceNameList
+        self.deviceRSSIList = central.deviceRSSIList
         deviceTableView.reloadData()
     }
     
@@ -54,10 +58,11 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.deviceTableView.separatorColor = UIColor.whiteColor()
         self.deviceTableView.separatorInset = UIEdgeInsetsZero
         
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
-        cell.backgroundColor = UIColor(red:185/255.0, green:215/255.0, blue:255/255.0, alpha:1.0)
+        let cell = self.deviceTableView.dequeueReusableCellWithIdentifier("DeviceCell_RID") as! DeviceCell
+        
         let deviceName: String = deviceNameList.objectAtIndex(indexPath.row) as! String
-        cell.textLabel?.text = deviceName
+        cell.deviceName.text = deviceName
+        cell.decibelLevel.text = "\(deviceRSSIList.objectAtIndex(indexPath.row))"
         return cell
     }
 }

@@ -26,12 +26,12 @@ class SplitScreenViewController: UIViewController, UIPopoverPresentationControll
     var offWarningView: UIView?
     var frostView: UIView?
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.bringSubviewToFront(tabbar)
         BLEInstance.statusDelegate = self
         
-        offWarningView = (NSBundle.mainBundle().loadNibNamed("BLEOffWarningView", owner: self, options: nil).first as? UIView)!
+        offWarningView = (NSBundle.mainBundle().loadNibNamed("BLEOffWarningView", owner: nil, options: nil).first as? UIView)!
         let width: CGFloat = 300.0
         let height: CGFloat = 400.0
         offWarningView!.frame = CGRectMake(self.view.frame.width/2 - width/2,self.view.frame.height/8, width, height)
@@ -39,11 +39,6 @@ class SplitScreenViewController: UIViewController, UIPopoverPresentationControll
         frostView = UIView(frame: self.view.frame)
         frostView!.backgroundColor = UIColor.grayColor()
         frostView!.alpha = 0.8
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.bringSubviewToFront(tabbar)
     }
 
     // Toggle value to know when top view is visible (for animating)
@@ -59,7 +54,7 @@ class SplitScreenViewController: UIViewController, UIPopoverPresentationControll
         }
         else {
             self.frostView!.removeFromSuperview()
-            self.offWarningView!.removeFromSuperview()
+           // self.offWarningView!.removeFromSuperview()
             self.view.layoutSubviews()
         }
     }

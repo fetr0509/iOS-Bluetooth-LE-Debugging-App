@@ -22,6 +22,7 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
     
     var deviceList: NSMutableArray = [] // list of discovered devices
     var deviceNameList: NSMutableArray = [] // list of discovered device names (for tableview)
+    var deviceRSSIList: NSMutableArray = []
     var discoveredServices: NSMutableArray = [] // list of discovered services
     var discoveredCharacteristics: NSMutableArray = []
     var centralManager: CBCentralManager!
@@ -35,6 +36,7 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         super.init()
         // initialize the Central Manager
         centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue(), options: [CBCentralManagerOptionShowPowerAlertKey:false])
+        NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: #selector(self.getRSSI), userInfo: nil, repeats: true)
     }
     
     // Get the actual device using the index selected in the TableView
@@ -71,6 +73,12 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.startedScanning)
     }
     
+    func getRSSI() {
+        for device in deviceList {
+            (device as! CBPeripheral).readRSSI()
+        }
+    }
+    
     // MARK: Delegate Methods
     
     // Called when the hardware state is updated.
@@ -102,6 +110,31 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         }
     }
     
+    // saves a reference to the discovered peripherals and also saves the name for display
+    public func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+        
+        if deviceList.containsObject(peripheral) {
+            return
+        }
+        
+        var deviceName = ""
+        deviceList.addObject(peripheral)
+        peripheral.delegate = self
+        deviceRSSIList.addObject(NSNumber(int: 0))
+        centralManager.connectPeripheral(peripheral, options: nil)
+        
+        if (peripheral.name) != nil {
+            deviceName = peripheral.name!
+            deviceNameList.addObject(peripheral.name!)
+        } else {
+            deviceName = "Unknown Device"
+            deviceNameList.addObject("Unknown Device")
+        }
+        
+        mainDelegate?.hasUpdateDevice!(self)
+        SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.foundDevice(deviceName))
+    }
+    
     // Not used yet
     public func centralManager(central: CBCentralManager, willRestoreState dict: [String : AnyObject]) {
         
@@ -109,11 +142,11 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
     
     // Called when successfully connected to a device
     public func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
-        connectedDevice = peripheral
+        //connectedDevice = peripheral
+        peripheral.readRSSI()
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.didConnect)
-        peripheral.delegate = self
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.setDelegateSelf)
-        peripheral.discoverServices(nil);
+        //peripheral.discoverServices(nil);
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.discoverServices)
     }
     
@@ -135,27 +168,9 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         }
     }
     
-    // saves a reference to the discovered peripherals and also saves the name for display
-    public func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        
-        if deviceList.containsObject(peripheral) {
-            return
-        }
-        
-        var deviceName = ""
-        deviceList.addObject(peripheral)
-        if (peripheral.name) != nil {
-            
-            deviceName = peripheral.name!
-            deviceNameList.addObject(peripheral.name!)
-        } else {
-            
-            deviceName = "Unknown Device"
-            deviceNameList.addObject("Unknown Device")
-        }
-        
+    public func peripheral(peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: NSError?) {
+        deviceRSSIList[deviceList.indexOfObject(peripheral)] = RSSI
         mainDelegate?.hasUpdateDevice!(self)
-        SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.foundDevice(deviceName))
     }
     
     // Called when a service is dicovered for connected peripheral

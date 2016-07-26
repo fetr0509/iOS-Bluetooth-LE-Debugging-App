@@ -28,8 +28,7 @@ class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataS
         self.infoTableView.separatorInset = UIEdgeInsetsZero
         centralReference.detailDelegate = self
         let nib = UINib(nibName: "ExpandableCell", bundle: nil)
-        infoTableView
-            .registerNib(nib, forCellReuseIdentifier: "ExpandableCell_RID")
+        infoTableView.registerNib(nib, forCellReuseIdentifier: "ExpandableCell_RID")
     }
     
     // MARK: UI Action Methods

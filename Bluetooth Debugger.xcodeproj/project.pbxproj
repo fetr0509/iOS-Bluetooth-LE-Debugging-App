@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE1654861D47CDD300859C34 /* DeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1654851D47CDD300859C34 /* DeviceCell.xib */; };
+		DE1654881D47CF1A00859C34 /* DeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1654871D47CF1A00859C34 /* DeviceCell.swift */; };
 		DED051521D287EE600B02DCE /* SharedDebuggerInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED051511D287EE600B02DCE /* SharedDebuggerInstance.swift */; };
 		DED051541D287F2100B02DCE /* DebuggerTextHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED051531D287F2100B02DCE /* DebuggerTextHandler.swift */; };
 		DED051561D28830A00B02DCE /* DebuggerStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED051551D28830A00B02DCE /* DebuggerStrings.swift */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE1654851D47CDD300859C34 /* DeviceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceCell.xib; sourceTree = "<group>"; };
+		DE1654871D47CF1A00859C34 /* DeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceCell.swift; sourceTree = "<group>"; };
 		DED051511D287EE600B02DCE /* SharedDebuggerInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedDebuggerInstance.swift; sourceTree = "<group>"; };
 		DED051531D287F2100B02DCE /* DebuggerTextHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggerTextHandler.swift; sourceTree = "<group>"; };
 		DED051551D28830A00B02DCE /* DebuggerStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggerStrings.swift; sourceTree = "<group>"; };
@@ -141,7 +145,7 @@
 				DEF6B59C1D35ACDE00C3C459 /* Debugger Text Handling  */,
 				DED8E7A91D17D55F00C307A5 /* Main Views */,
 				DEDC96A31D43631300DBAAF5 /* Auxilary Views */,
-				DEF6B59F1D35B61500C3C459 /* Custom Expandable Cells */,
+				DEF6B59F1D35B61500C3C459 /* Custom Cells */,
 				DED8E7B61D17D6DC00C307A5 /* XIBs */,
 				DEDC96941D3AEDEA00DBAAF5 /* Helper Functions */,
 				DED8E7681D15EA6300C307A5 /* Assets.xcassets */,
@@ -191,6 +195,7 @@
 				DED8E7BB1D17E00400C307A5 /* CentralView.xib */,
 				DED0515B1D2B2BCD00B02DCE /* CentralDetailView.xib */,
 				DEF6B5AA1D38441300C3C459 /* ExpandableCell.xib */,
+				DE1654851D47CDD300859C34 /* DeviceCell.xib */,
 				DEE9DE661D46912800D0FCBD /* BLEOffWarningView.xib */,
 			);
 			name = XIBs;
@@ -222,12 +227,13 @@
 			name = "Debugger Text Handling ";
 			sourceTree = "<group>";
 		};
-		DEF6B59F1D35B61500C3C459 /* Custom Expandable Cells */ = {
+		DEF6B59F1D35B61500C3C459 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
 				DEF6B5A61D38369500C3C459 /* ExpandableCell.swift */,
+				DE1654871D47CF1A00859C34 /* DeviceCell.swift */,
 			);
-			name = "Custom Expandable Cells";
+			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +345,7 @@
 				DED8E7691D15EA6300C307A5 /* Assets.xcassets in Resources */,
 				DED0515C1D2B2BCD00B02DCE /* CentralDetailView.xib in Resources */,
 				DEF6B5AB1D38441300C3C459 /* ExpandableCell.xib in Resources */,
+				DE1654861D47CDD300859C34 /* DeviceCell.xib in Resources */,
 				DEE9DE671D46912800D0FCBD /* BLEOffWarningView.xib in Resources */,
 				DED8E7671D15EA6300C307A5 /* Main.storyboard in Resources */,
 				DED8E7BE1D17E01300C307A5 /* PeripheralView.xib in Resources */,
@@ -374,6 +381,7 @@
 				DED051541D287F2100B02DCE /* DebuggerTextHandler.swift in Sources */,
 				DED051581D28855700B02DCE /* topViewController.swift in Sources */,
 				DED8E7961D177B9000C307A5 /* CentralViewController.swift in Sources */,
+				DE1654881D47CF1A00859C34 /* DeviceCell.swift in Sources */,
 				DEDC96961D3AEE0C00DBAAF5 /* HelperFunctions.swift in Sources */,
 				DED051561D28830A00B02DCE /* DebuggerStrings.swift in Sources */,
 				DED8E79E1D17D34100C307A5 /* BLEPeripheral.swift in Sources */,

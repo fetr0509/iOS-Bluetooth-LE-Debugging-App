@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BLEOffWarningView" customModule="Bluetooth_Debugger" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="s7a-2c-5mD" customClass="BLEOffWarningView" customModule="Bluetooth_Debugger" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="BLEOffWarningView" id="s7a-2c-5mD" userLabel="BLEOffWarningView" customClass="BLEOffWarningView" customModule="Bluetooth_Debugger" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -35,7 +35,9 @@
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.43137254899999999" green="0.63921568630000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-            <accessibility key="accessibilityConfiguration" identifier="BLEOffWarningView" label="BLEOffWarningView"/>
+            <accessibility key="accessibilityConfiguration" identifier="BLEOffWarningView" label="BLEOffWarningView">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="o2a-4L-zq9" secondAttribute="bottom" constant="8" id="0nO-ys-MTs"/>
                 <constraint firstAttribute="trailing" secondItem="o2a-4L-zq9" secondAttribute="trailing" constant="8" id="35o-vU-CVc"/>
