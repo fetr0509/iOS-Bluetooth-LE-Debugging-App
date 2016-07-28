@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="443" height="55"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l8V-sJ-dPa" id="hlX-8Q-PGi">
-                <rect key="frame" x="0.0" y="0.0" width="443" height="55"/>
+                <rect key="frame" x="0.0" y="0.0" width="443" height="54.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nit-p2-Qcx">
@@ -38,6 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" red="0.72549019609999998" green="0.84313725490000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="Opw-qS-TgV" firstAttribute="top" secondItem="hlX-8Q-PGi" secondAttribute="topMargin" id="Pvt-gC-G3y"/>
                     <constraint firstItem="Nit-p2-Qcx" firstAttribute="leading" secondItem="gv4-LJ-h4F" secondAttribute="trailing" constant="8" symbolic="YES" id="QjJ-j3-ypo"/>

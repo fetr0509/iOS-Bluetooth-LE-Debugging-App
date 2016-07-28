@@ -22,7 +22,7 @@ class CentralDetailView: UIViewController, UITableViewDelegate, UITableViewDataS
     var discoveredCharacteristics: NSArray = []
     
     override func viewDidLoad() {
-        centralReference.connectToDevice(selectedIndex!)
+        centralReference.querryDevice(selectedIndex!)
         self.deviceLabel.text = centralReference.deviceNameList[selectedIndex!] as? String
         self.infoTableView.separatorColor = UIColor.whiteColor()
         self.infoTableView.separatorInset = UIEdgeInsetsZero

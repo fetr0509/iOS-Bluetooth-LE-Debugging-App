@@ -23,10 +23,12 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
     var deviceList: NSMutableArray = [] // list of discovered devices
     var deviceNameList: NSMutableArray = [] // list of discovered device names (for tableview)
     var deviceRSSIList: NSMutableArray = []
+    
     var discoveredServices: NSMutableArray = [] // list of discovered services
     var discoveredCharacteristics: NSMutableArray = []
     var centralManager: CBCentralManager!
     var connectedDevice: CBPeripheral? = nil // set when device is succefully connected to
+    var RSSITimer: NSTimer = NSTimer()
     
     weak var mainDelegate :BLECentralControllerDelegate?
     weak var detailDelegate :BLECentralControllerDelegate?
@@ -36,24 +38,14 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         super.init()
         // initialize the Central Manager
         centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue(), options: [CBCentralManagerOptionShowPowerAlertKey:false])
-        NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: #selector(self.getRSSI), userInfo: nil, repeats: true)
-    }
-    
-    // Get the actual device using the index selected in the TableView
-    public func getDevice(index: Int) -> CBPeripheral? {
-        if deviceList.count > index {
-            return (deviceList[index] as! CBPeripheral)
-        } else {
-            return nil
-        }
+        RSSITimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: #selector(self.getRSSI), userInfo: nil, repeats: true)
     }
     
     // Helper function for connecting to device
-    public func connectToDevice(index: Int) -> Void {
+    public func querryDevice(index: Int) -> Void {
         let device = deviceList[index] as! CBPeripheral
-        centralManager.connectPeripheral(device, options: nil)
-        SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.attemptConnect(deviceNameList[index] as! String))
-        
+        device.discoverServices(nil)
+        SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.discoverServices)
     }
     
     // Helper function for disconnecting to device
@@ -74,8 +66,12 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
     }
     
     func getRSSI() {
-        for device in deviceList {
-            (device as! CBPeripheral).readRSSI()
+        for device in deviceList as! [CBPeripheral]{
+            if device.state == .Connected {
+                device.readRSSI()
+            } else {
+                centralManager.connectPeripheral(device, options: nil)
+            }
         }
     }
     
@@ -120,16 +116,20 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         var deviceName = ""
         deviceList.addObject(peripheral)
         peripheral.delegate = self
+        SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.setDelegateSelf)
         deviceRSSIList.addObject(NSNumber(int: 0))
+        
         centralManager.connectPeripheral(peripheral, options: nil)
         
         if (peripheral.name) != nil {
             deviceName = peripheral.name!
             deviceNameList.addObject(peripheral.name!)
         } else {
-            deviceName = "Unknown Device"
+            deviceName = "Unnamed Device"
             deviceNameList.addObject("Unknown Device")
         }
+        
+        SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.attemptConnect(deviceName))
         
         mainDelegate?.hasUpdateDevice!(self)
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.foundDevice(deviceName))
@@ -145,9 +145,6 @@ public class BLECentral: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         //connectedDevice = peripheral
         peripheral.readRSSI()
         SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.didConnect)
-        SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.setDelegateSelf)
-        //peripheral.discoverServices(nil);
-        SharedDebuggerInstance.sharedInstance.debuggerTextHandler.addDebuggerString(DebuggerStrings.discoverServices)
     }
     
     // called when the connection failed, if there is an error it is displayed

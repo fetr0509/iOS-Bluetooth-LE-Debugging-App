@@ -25,8 +25,28 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.deviceTableView.separatorInset = UIEdgeInsetsZero
         let nib = UINib(nibName: "DeviceCell", bundle: nil)
         deviceTableView.registerNib(nib, forCellReuseIdentifier: "DeviceCell_RID")
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.animateLabel), userInfo: nil, repeats: true)
     }
     
+    func animateLabel(){
+        switch searchingLabel.text! {
+        case "Searching for Devices":
+            searchingLabel.text = "Searching for Devices."
+            break
+        case "Searching for Devices.":
+            searchingLabel.text = "Searching for Devices.."
+            break
+        case "Searching for Devices..":
+            searchingLabel.text = "Searching for Devices..."
+            break
+        case "Searching for Devices...":
+            searchingLabel.text = "Searching for Devices"
+            break
+        default:
+            "Searching for Devices"
+        }
+        
+    }
     // MARK: BluetoothCentral Delegate Methods
     func hasUpdateDevice(sender: BLECentral){
         self.deviceNameList = central.deviceNameList
@@ -62,7 +82,12 @@ class CentralViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let deviceName: String = deviceNameList.objectAtIndex(indexPath.row) as! String
         cell.deviceName.text = deviceName
-        cell.decibelLevel.text = "\(deviceRSSIList.objectAtIndex(indexPath.row))"
+        let level = deviceRSSIList.objectAtIndex(indexPath.row)
+        if level.intValue == 0 {
+            cell.decibelLevel.text = "---"
+        } else {
+            cell.decibelLevel.text = "\(deviceRSSIList.objectAtIndex(indexPath.row))"
+        }
         return cell
     }
 }

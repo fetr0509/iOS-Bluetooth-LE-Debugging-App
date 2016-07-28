@@ -152,7 +152,6 @@
 				DED8E7651D15EA6300C307A5 /* Main.storyboard */,
 				DED8E76A1D15EA6300C307A5 /* LaunchScreen.storyboard */,
 				DED8E76D1D15EA6300C307A5 /* Info.plist */,
-				DEE9DE641D467EBF00D0FCBD /* Singletons.swift */,
 			);
 			path = "Bluetooth Debugger";
 			sourceTree = "<group>";
@@ -204,6 +203,7 @@
 		DEDC96941D3AEDEA00DBAAF5 /* Helper Functions */ = {
 			isa = PBXGroup;
 			children = (
+				DEE9DE641D467EBF00D0FCBD /* Singletons.swift */,
 				DEDC96951D3AEE0C00DBAAF5 /* HelperFunctions.swift */,
 			);
 			name = "Helper Functions";
