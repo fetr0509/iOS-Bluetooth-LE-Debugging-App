@@ -54,9 +54,9 @@ class SplitScreenViewController: UIViewController, UIPopoverPresentationControll
         }
         else {
             self.frostView!.removeFromSuperview()
-           // self.offWarningView!.removeFromSuperview()
-            self.view.layoutSubviews()
+            self.offWarningView!.removeFromSuperview()
         }
+        self.view.layoutSubviews()
     }
     
     @IBAction func toggleDebuggerView(sender: AnyObject) {
