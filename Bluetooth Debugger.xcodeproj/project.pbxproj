@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DE1654861D47CDD300859C34 /* DeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1654851D47CDD300859C34 /* DeviceCell.xib */; };
 		DE1654881D47CF1A00859C34 /* DeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1654871D47CF1A00859C34 /* DeviceCell.swift */; };
+		DE54BEA81D5BDC360050493D /* PeripheralDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE54BEA71D5BDC360050493D /* PeripheralDetailView.swift */; };
 		DED051521D287EE600B02DCE /* SharedDebuggerInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED051511D287EE600B02DCE /* SharedDebuggerInstance.swift */; };
 		DED051541D287F2100B02DCE /* DebuggerTextHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED051531D287F2100B02DCE /* DebuggerTextHandler.swift */; };
 		DED051561D28830A00B02DCE /* DebuggerStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED051551D28830A00B02DCE /* DebuggerStrings.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		DE1654851D47CDD300859C34 /* DeviceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceCell.xib; sourceTree = "<group>"; };
 		DE1654871D47CF1A00859C34 /* DeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceCell.swift; sourceTree = "<group>"; };
+		DE54BEA71D5BDC360050493D /* PeripheralDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralDetailView.swift; sourceTree = "<group>"; };
 		DED051511D287EE600B02DCE /* SharedDebuggerInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedDebuggerInstance.swift; sourceTree = "<group>"; };
 		DED051531D287F2100B02DCE /* DebuggerTextHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggerTextHandler.swift; sourceTree = "<group>"; };
 		DED051551D28830A00B02DCE /* DebuggerStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggerStrings.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				DED8E7951D177B9000C307A5 /* CentralViewController.swift */,
 				DED051591D2B2B9F00B02DCE /* CentralDetailView.swift */,
 				DED8E7B71D17D79E00C307A5 /* PeripheralViewController.swift */,
+				DE54BEA71D5BDC360050493D /* PeripheralDetailView.swift */,
 			);
 			name = "Main Views";
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				DED8E79A1D17B01000C307A5 /* bottomViewController.swift in Sources */,
 				DED051541D287F2100B02DCE /* DebuggerTextHandler.swift in Sources */,
 				DED051581D28855700B02DCE /* topViewController.swift in Sources */,
+				DE54BEA81D5BDC360050493D /* PeripheralDetailView.swift in Sources */,
 				DED8E7961D177B9000C307A5 /* CentralViewController.swift in Sources */,
 				DE1654881D47CF1A00859C34 /* DeviceCell.swift in Sources */,
 				DEDC96961D3AEE0C00DBAAF5 /* HelperFunctions.swift in Sources */,

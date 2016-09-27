@@ -39,11 +39,19 @@
                     </connections>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMd-Sq-hvB">
-                    <rect key="frame" x="277.5" y="8" width="45" height="21"/>
+                    <rect key="frame" x="278" y="8" width="45" height="21"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7a-5O-NIb">
+                    <rect key="frame" x="434" y="8" width="151" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="151" id="GZA-9Y-qpW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Save Current profile"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -52,6 +60,10 @@
                 <constraint firstAttribute="trailing" secondItem="Qd5-sf-rBc" secondAttribute="trailing" id="65d-3A-MX7"/>
                 <constraint firstItem="Hie-3w-gKn" firstAttribute="baseline" secondItem="GMd-Sq-hvB" secondAttribute="firstBaseline" id="8uD-4I-3T2"/>
                 <constraint firstItem="GMd-Sq-hvB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="9X9-15-bNi"/>
+                <constraint firstItem="a7a-5O-NIb" firstAttribute="firstBaseline" secondItem="Hie-3w-gKn" secondAttribute="baseline" id="BoV-La-2h5"/>
+                <constraint firstItem="a7a-5O-NIb" firstAttribute="top" secondItem="GMd-Sq-hvB" secondAttribute="top" id="DNA-Lt-uVf"/>
+                <constraint firstItem="a7a-5O-NIb" firstAttribute="baseline" secondItem="Hie-3w-gKn" secondAttribute="baseline" id="LPm-uZ-tWe"/>
+                <constraint firstAttribute="trailing" secondItem="a7a-5O-NIb" secondAttribute="trailing" constant="15" id="M3m-Lz-oRh"/>
                 <constraint firstItem="Hie-3w-gKn" firstAttribute="top" secondItem="GMd-Sq-hvB" secondAttribute="top" id="UpW-Xr-4nu"/>
                 <constraint firstItem="Qd5-sf-rBc" firstAttribute="top" secondItem="Hie-3w-gKn" secondAttribute="bottom" constant="8" symbolic="YES" id="XeG-yP-ed8"/>
                 <constraint firstAttribute="bottom" secondItem="Qd5-sf-rBc" secondAttribute="bottom" id="iIQ-Ze-S5U"/>
